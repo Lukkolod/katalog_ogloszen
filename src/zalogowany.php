@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Zalogowany</h1>
+    <h1>Zalogowany.</h1>
 </body>
 </html>
