@@ -3,11 +3,18 @@ require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
+use Dotenv\Dotenv;
 
 session_start();
 
 
 include "../db/db_connect.php";
+
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../'); 
+$dotenv->load();
+
+$MailPassword = $_ENV['MAIL_PASSWORD'] ?? null;
 
 
 $message = "";
@@ -58,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $mail->Port = 587;
 
                 $mail->Username = "katalog.ogloszen.test@gmail.com";
-                $mail->Password = "bsziozhcagucsekw";
+                $mail->Password = $MailPassword;
 
                 $mail->setFrom('katalog.ogloszen.test@gmail.com', 'Katalog ogloszen');
                 $mail->addReplyTo('katalog.ogloszen.test@gmail.com', 'Katalog ogloszen');

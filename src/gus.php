@@ -1,17 +1,8 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/php_error_log.log');
-
-// Debugging: Sprawdzenie, co PHP dostaje w żądaniu
-file_put_contents("debug_log.txt", "RAW POST: " . file_get_contents("php://input") . "\n", FILE_APPEND);
-file_put_contents("debug_log.txt", "POST ARRAY: " . print_r($_POST, true) . "\n", FILE_APPEND);
-
-
 require_once '../vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use GusApi\GusApi;
 use GusApi\RegonConstantsInterface;
 use GusApi\Exception\InvalidUserKeyException;
@@ -19,10 +10,15 @@ use GusApi\ReportTypes;
 use GusApi\ReportTypeMapper;
 
 
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../'); 
+$dotenv->load();
+
 header('Content-Type: application/json'); 
 
+$apiKey = $_ENV['GUS_API_KEY'] ?? null;
+
 $gus = new GusApi(
-    'a4d8034f10dd49d3b60c', 
+    $apiKey, 
     new \GusApi\Adapter\Soap\SoapAdapter(
         RegonConstantsInterface::BASE_WSDL_URL,
         RegonConstantsInterface::BASE_WSDL_ADDRESS 

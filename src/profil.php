@@ -4,7 +4,7 @@ session_start();
 include "../db/db_connect.php";
 
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
@@ -44,7 +44,7 @@ background: linear-gradient(90deg, rgba(10,3,57,1) 9%, rgba(25,27,47,1) 51%, rgb
         <h1 class="text-3xl text-white font-bold text-center mb-8">UZUPEŁNIJ POZOSTAŁE DANE PRZED PRZEJŚCIEM DALEJ</h1>
         <div class="w-full max-w-md bg-gray-800/80 rounded-lg p-6 shadow-[0_0_15px_5px_rgba(99,102,241,0.3)] shadow-blue-600/50 inset-shadow-indigo-500/50">
 
-            <form method="post" action="" class="text-xl flex flex-col text-white">
+            <form method="post" action="dane.php" class="text-xl flex flex-col text-white">
                 <label for="imie" class="text-lg font-semibold text-gray-200">Imię:</label>
                 <input type="text" name="imie" id="imie" required
                     class="bg-gray-700 text-gray-300 border-0 rounded-md p-2 w-full focus:bg-gray-600 focus:outline-none focus:ring-3 focus:ring-blue-500 transition ease-in-out duration-150">
