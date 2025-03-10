@@ -25,7 +25,7 @@
 background: linear-gradient(90deg, rgba(10,3,57,1) 9%, rgba(25,27,47,1) 51%, rgba(10,3,57,1) 83%);">
 
         <!-- LogOut -->
-        <div class="w-fit h-fit bg-gray-200 text-black fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex rounded-md hidden flex-col" id="logout">
+        <div class="w-fit h-fit bg-gray-200 text-black fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex rounded-md hidden flex-col z-10" id="logout">
             <h1 class="mt-6 font-bold text-2xl p-2">Czy chcesz sie wylogować?</h1>
             <div class="flex items-center justify-around m-12">
                 <a href="logout.php" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition duration-150">Tak</a>
